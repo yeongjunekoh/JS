@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
     font-family: "Ubuntu", sans-serif; 
+    /* 우분투 글꼴아니면 sans-serif체를 사용하겠다.*/
     box-sizing: border-box;
+    /* 박스 너비 기준 정하기 border-box는 width에 테두리까지 포함 */
     text-decoration: none;   
 }
 
@@ -15,10 +17,10 @@ body{
     VMIN(Viewport Minimum) : 뷰포트 너비 또는 높이를 기준으로 하는 최소 값입니다.
     VMAX(Viewport Maximum) : 뷰포트 너비 또는 높이를 기준으로 하는 최대 값입니다.*/
     background: url(bg.jpg) no-repeat center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-size: cover; /*요소 전체를 덮도록 배경 이미지를 확대하거나 축소*/
+    display: flex; /*플렉서블 박스 레이아웃을 만들기 위함 flex속성은 박스 레벨 요소로 정의*/
+    align-items: center; /* 주축의 중앙에 요소들을 배치 */
+    justify-content: center; /* 교차축의 중앙에 요소들을 배치 */
 }
 
 .profile-card{
@@ -39,10 +41,11 @@ body{
     background: linear-gradient(130deg, #74b9ff, #e66767);
     margin: auto;
     border-radius: 50%;
-    background-size: 200% 200%; /*이거 안하니깐 그라데이션이 안됨 왜?? */
+    background-size: 200% 200%; /*사진의 백그라운드에 그라데이션 넣어있는 원 넣기*/
     animation: animated-gradient 2s linear infinite;
+    /*2초 동안 에니메이션 실행되는데 반복횟수가 무한대이고 일정하게 변화한다.*/
 }
-/* 이 아래는 뭐길래 이렇게 좋은 기능일까?? */
+/* keyframes속성은 애니메이션 지점을 설정하는 것이다. 이게 있어서 움직이는 그라데이션이 되는 것*/
 @keyframes animated-gradient{
     25%{
         background-position: left bottom;
@@ -69,7 +72,7 @@ body{
     color: #f2f2f2;
     font-size: 28px;
     font-weight: 600;
-    /* font-weight?? */
+    /* font-weight: 두께 */
     margin: 10px 0;
 }
 
@@ -90,11 +93,11 @@ body{
     font-size : 22px;
     transition: .3s linear;
 }
-
+/* 0.3초 동안 일정하게 변화하게 하는 것*/
 .sm a:hover{
     color: #e66767;
 }
-/*위에 꺼는 색을 더해주는 건가? */
+/*마우스를 올리면 색이 변할 수 있도록 하는 것 hover */
 
 .contact-btn{
     display: inline-block;
@@ -104,7 +107,6 @@ body{
     border-radius: 6px;
     margin-top: 16px;
     transition: .3s linear;
-    /*transition이 움직일 수 있게 하는 건가? */
 }
 
 .contact-btn:hover{
@@ -124,14 +126,14 @@ body{
 
   
 .item{
-    flex: 1; /*이건 머죠 */
+    flex: 1; /*grow,shrink,basis를 나타냄 몇 배를 줄일지 늘릴지 기본 크기를 정한다.*/
     text-transform: uppercase;
     font-size: 13px;
     color: #e66767;
 }
 
 .item span{
-    display: block;
+    display: block; /*이게 아래 글자와 분리되도록 도와준다.*/
     color: #2c3a47;
     font-size: 30px;
 }
