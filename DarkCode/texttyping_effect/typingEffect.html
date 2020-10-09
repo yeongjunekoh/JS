@@ -26,6 +26,11 @@
             }
         }
         typing();
+        setInterval(function repeat(){
+            document.getElementById("text").innerHTML = "";
+            i = 0;
+            typing();
+        },5000);
     </script>
 </body>
 </html>
