@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href = "Filter.css">
+</head>
+<body>
+    <div class="searchbox">
+        <div class="header">
+            <h1>Contacts</h1>
+            <input onkeyup = "filter()" type="text" id = "value" placeholder="Type to Search">
+            <!-- onkeyup : 키를 눌렀다가 땠을 때 이벤트이다 (onkeydown 에서 인식하는 키들을 인식 한다). 그렇게 filter함수를 실행하게 된다.-->
+        </div>
+
+        <div class="container">
+            <div class="profile">
+                <span class="icon">A</span>
+                <span class="name">Archie Hansen</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">C</span>
+                <span class="name">Celia Wood</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">D</span>
+                <span class="name">Danielle Spencer</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">M</span>
+                <span class="name">Margin Austin</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">S</span>
+                <span class="name">Simon Daniels</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">G</span>
+                <span class="name">Glenn Stevenson</span>
+            </div>
+            
+            <div class="profile">
+                <span class="icon">C</span>
+                <span class="name">Collen black</span>
+            </div>
+
+            <div class="profile">
+                <span class="icon">M</span>
+                <span class="name">Miriam Johnston</span>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    function filter(){
+        var value, name, profile, i;
+
+        value = document.getElementById("value").value.toUpperCase();
+        profile = document.getElementsByClassName("profile");
+        /* getElementsByClassname함수는 태그의 class속성을 사용하여 접근한다. 
+        동일한 class명이 있을 수 있기때문에 getElemetById와 달리 컬렉션 객체를 반환하게 된다.
+        따라서 for문을 사용하거나 특정 index에 위치한 element를 반환받아 사용할 수 있다.
+        첫번째 클래스가 profile배열의 0번째 index에 있는 요소가 되는 것이다.*/
+
+        for(i = 0; i < profile.length; i++){
+            name = profile[i].getElementsByClassName("name");
+            //각 profile요소에서 name class만 받아와서 name값에 넣어 준뒤 비교를 하는 것이다.
+            if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+                /*value에서 값을 받아올 때, 대문자로 받아왔으므로 요소 또한 대문자로 변환을 해준다.
+                indexOf함수는 문자열 내에서 특정한 문자열의 index 값을 리턴한다.
+                value값이 내장되어 있는 profile의 name값의 경우에는 flex라는 속성으로 보여지게 되고,
+                아니면 else를 통해 none속성으로 안보이게 한다.*/
+                profile[i].style.display = "flex";
+            }else{
+                profile[i].style.display = "none";
+                //박스가 생성되지 않고, 공간도 차지하지 않도록 none속성으로 만들어준다.
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
